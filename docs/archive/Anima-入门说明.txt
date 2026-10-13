@@ -1,0 +1,43 @@
+Anima 2.9B / ComfyUI 入门
+
+安装位置：D:\AI\ComfyUI
+启动：双击 D:\AI\Start-ComfyUI.cmd
+停止：双击 D:\AI\Stop-ComfyUI.cmd
+网页：http://127.0.0.1:8188
+如果 Chrome 显示 ERR_BLOCKED_BY_CLIENT，可使用当前 Codex 右侧已打开的 ComfyUI 页面。
+
+第一次使用
+1. 左侧点击“工作流”，选择 Anima_2.9B_6GB。
+   列表没更新时点击刷新；也可以把同目录的 Anima_2.9B_6GB.json 拖进画布。
+2. 在“① 正面提示词”里修改画面描述。示例使用英文，写清主体、场景、动作、光线和画风。
+3. 暂时保持 512×512、批次 1、28 步、CFG 4、euler / sgm_uniform。
+4. 点击“运行”。首次运行还要加载模型，需多等一会。
+5. 图片自动保存到 D:\AI\ComfyUI\output，可在“④ 生成结果”查看。
+
+模型与用途
+- 使用 Gazingstars123/Anima-2.9B 的 Anima-2.9B-preview-v1。
+- 偏二次元、插画；这不是 Krea 2 的写实替代品。
+- 主模型：models\diffusion_models\Anima-2.9B-preview-v1.safetensors
+- 文本编码器：models\text_encoders\qwen_3_06b_base.safetensors
+- 共用已有 VAE：models\vae\qwen_image_vae.safetensors
+- 所有节点来自 ComfyUI 核心，不需要额外插件。
+- 512×512 是针对本机 6GB 显存的入门尺寸，低于作者推荐尺寸，细节与构图能力不代表模型上限。
+- 作者推荐 28–50 步、CFG 3.5–5。更大尺寸或更多步数会增加时间与内存开销，先不要批量生图。
+
+本机注意
+- GTX 1660 Ti 6GB、16GB 内存；当前沿用动态显存、CPU 分块 VAE 解码设置。
+- 之前测试 Krea 时显卡出现温度降频。模型缩小并不解决散热问题，请插电并保持散热口通畅。
+- Krea 模型和旧工作流保留。要切回时选择 Krea2_Turbo_6GB；无需重装。
+
+2026-10-13 实际测试
+- 完整出图成功：512×512、28 步、CFG 4、euler / sgm_uniform、随机种子 20261013。
+- 后端记录总耗时 1588.033 秒，即约 26 分 28 秒，包含首次加载和解码。
+- 成图：D:\AI\ComfyUI\output\Anima_2.9B_First_Test_00001_.png
+- 生成期间显卡约 86–90°C，频率曾降到 300MHz；本次速度受降频影响，不能当作无降频情况下的性能基准。
+- 测试完成后已释放模型内存，服务仍保持运行。下次运行会重新加载。
+- 结论：当前配置可完整运行 Anima 2.9B，但还达不到快速、流畅的生图体验。
+
+来源与许可
+模型：https://huggingface.co/Gazingstars123/Anima-2.9B
+基础工作流与组件：https://docs.comfy.org/tutorials/image/anima/anima
+模型标注 CircleStone Labs Non-Commercial License；商用前请阅读发布页的具体许可。

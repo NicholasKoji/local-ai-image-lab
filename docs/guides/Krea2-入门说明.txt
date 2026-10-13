@@ -1,0 +1,57 @@
+Krea 2 Turbo Q2_K · 本机入门配置（2026-10-13）
+
+已完成的实测
+- GTX 1660 Ti 6GB / i7-9750H / 16GB RAM。
+- 512×512、单张、2 步、CFG 1、euler/simple，成功生成橘猫图片。
+- 模型加载、文本编码、采样、CPU VAE 解码合计 453.75 秒（7 分 34 秒）。
+- 其中主模型 2 步采样 345.05 秒（5 分 45 秒）。后续耗时会受缓存、后台负载和温度影响。
+- 这是 2 步短测结果，不代表完整 8 步画质或 8 步耗时已经验证。
+- 默认设为已实测的 2 步，避免点击运行便进入长时间的 8 步测试。画质优先时可以自行改为 8 步。
+- FP16 主模型计算通过本次成图检查；Q4 文本编码的 12 层特征尺寸正确、数值有限。
+- GPU 上的 Q4 文本编码持续约 10 分钟仍未完成，已中断；当前改用 CPU 文本编码，主模型仍使用 GPU。
+- 测试结束已释放模型，不留待执行任务；本地界面保持打开。
+
+如何使用
+1. 双击 D:\AI\Start-ComfyUI.cmd，等待本地服务启动。
+2. 在工作流列表中打开 Krea2_Turbo_Q2_K_6GB，或将同名 JSON 拖入 ComfyUI。
+3. 在画面描述框内修改提示词，建议先用简短英文描述。
+4. 保持 512×512、单张、2 步、CFG 1，点击运行。当前机器仍需等待数分钟，不是秒出图配置。
+5. 图片自动保存在 D:\AI\ComfyUI\output。
+6. 不用时双击 D:\AI\Stop-ComfyUI.cmd；关闭网页不会自动停止后台程序。
+
+本机地址：http://127.0.0.1:8188
+Chrome 先前对本地地址显示 ERR_BLOCKED_BY_CLIENT；没有更改浏览器拦截设置。可使用已经打开的 Codex 内置浏览器。
+
+当前实际权重
+- 主模型：D:\AI\ComfyUI\models\diffusion_models\krea2_turbo-Q2_K.gguf
+  4,889,589,024 字节，约 4.89GB / 4.55GiB。
+- 文本编码器：D:\AI\ComfyUI\models\text_encoders\Qwen3VL-4B-Instruct-Q4_K_M.gguf
+  2,497,281,664 字节，约 2.50GB / 2.33GiB。
+- 共用 VAE：D:\AI\ComfyUI\models\vae\qwen_image_vae.safetensors
+  253,806,246 字节。VAE 在 CPU 上以 FP32 解码。
+
+清理情况
+- 已删除旧主模型 krea2_turbo_fp8_scaled.safetensors（13,141,730,784 字节）。
+- 旧文本编码器的删除命令被执行环境拦截，文件仍保留，当前工作流已不使用它：
+  D:\AI\ComfyUI\models\text_encoders\qwen3vl_4b_fp8_scaled.safetensors
+  5,242,467,968 字节（约 4.88GiB）；可在资源管理器中手动删除，不影响当前 Q4 文本编码配置。
+- 本轮结束前 D 盘剩余约 42.65GiB。手动删除上述旧编码器后还能释放约 4.88GiB。
+- Anima 模型和其 qwen_3_06b_base 编码器属于另一套工作流，本轮保留；共用 VAE 保留。
+
+软件与节点
+- ComfyUI v0.39.0、Python 3.12.11、PyTorch 2.12.1+cu126。
+- ComfyUI-GGUF：city96 官方仓库，提交 6ea2651；gguf 0.19.0。
+- 主模型使用 UnetLoaderGGUFAdvanced + ModelComputeDtype(fp16)。
+- 文本使用本机适配节点 Krea2TextGGUFLoader，device=cpu。
+  文件：D:\AI\ComfyUI\custom_nodes\krea2_text_gguf.py
+  它沿用原生 Krea 2 分词模板、12 层特征提取和条件格式，跳过文生图不用的视觉网络。
+  仅支持文本提示词。没有把 Qwen3-VL 当作普通 Qwen3/Z-Image 编码器使用。
+- 未改 ComfyUI 核心源码、显卡驱动、风扇、电源方案或功率限制，也未改原有 Anaconda。
+- 工作流位置：D:\AI\ComfyUI\user\default\workflows\Krea2_Turbo_Q2_K_6GB.json
+- 日志位置：D:\AI\logs\comfyui.stderr.log
+
+来源
+主模型：https://huggingface.co/vantagewithai/Krea-2-Turbo-GGUF
+编码器：https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct-GGUF
+GGUF 节点：https://github.com/city96/ComfyUI-GGUF
+ComfyUI Krea 2 文档：https://docs.comfy.org/tutorials/image/krea/krea-2

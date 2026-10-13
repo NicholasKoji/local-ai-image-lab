@@ -1,0 +1,79 @@
+[INFO] setup plugin alembic.autogenerate.schemas
+[INFO] setup plugin alembic.autogenerate.tables
+[INFO] setup plugin alembic.autogenerate.types
+[INFO] setup plugin alembic.autogenerate.constraints
+[INFO] setup plugin alembic.autogenerate.defaults
+[INFO] setup plugin alembic.autogenerate.comments
+[INFO] setup plugin alembic.ext.checkconstraint_byname
+[WARNING] On windows we are currently forcing single GPU mode in ComfyUI due to a Nvidia related issue, if you want to disable this use: --cuda-device all
+[WARNING] WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+[INFO] Found comfy_kitchen backend cuda: {'available': True, 'disabled': True, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Found comfy_kitchen backend hip: {'available': False, 'disabled': False, 'unavailable_reason': 'PyTorch ROCm/HIP runtime not available', 'capabilities': []}
+[INFO] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[INFO] Found comfy_kitchen backend ascend: {'available': False, 'disabled': False, 'unavailable_reason': "torch-npu is not installed: No module named 'torch_npu'", 'capabilities': []}
+[INFO] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_embedding', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Checkpoint files will always be loaded safely.
+[INFO] Total VRAM 6144 MB, total RAM 16303 MB
+[INFO] pytorch version: 2.7.1+cu126
+[INFO] Set vram state to: LOW_VRAM
+[INFO] Device: cuda:0 NVIDIA GeForce GTX 1660 Ti : cudaMallocAsync
+[INFO] Using pytorch attention
+[INFO] Python version: 3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]
+[INFO] ComfyUI version: 0.39.0
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] comfy-kitchen version: 0.2.37
+[WARNING] Dynamic vram disabled with argument. If you have any issues with dynamic vram enabled please give us a detailed reports as this argument will be removed soon. If you use gguf we recommend keeping dynamic vram enabled and using native ComfyUI model formats instead. ComfyUI native formats like fp8, int8 and w4a8 will be faster even if they are larger than your memory.
+[INFO] comfyui-frontend-package version: 1.53.10
+[INFO] comfyui-workflow-templates version: 0.11.76
+[INFO] comfyui-embedded-docs version: 0.5.13
+[INFO] comfy-kitchen version: 0.2.37
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] [Prompt Server] web root: D:\AI\ComfyUI\.venv\Lib\site-packages\comfyui_frontend_package\static
+[INFO] Asset seeder disabled
+[INFO] No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+[INFO]
+Import times for custom nodes:
+[INFO]    0.0 seconds: D:\AI\ComfyUI\custom_nodes\websocket_image_save.py
+[INFO]
+[INFO] Using RAM pressure cache.
+[INFO] Starting server
+
+[INFO] To see the GUI go to: http://127.0.0.1:8188
+[INFO] got prompt
+[INFO] Model storage policy: fast_disk=False paths=['D:\\AI\\ComfyUI\\models\\vae\\qwen_image_vae.safetensors']
+[INFO] Using pytorch attention in VAE
+[INFO] Using pytorch attention in VAE
+[INFO] VAE load device: cpu, offload device: cpu, dtype: torch.float32
+[INFO] Found quantization metadata version 1
+[INFO] Using MixedPrecisionOps for text encoder
+[INFO] Model storage policy: fast_disk=False paths=['D:\\AI\\ComfyUI\\models\\text_encoders\\qwen3vl_4b_fp8_scaled.safetensors']
+[INFO] Requested to load Krea2TEModel_
+[INFO] loaded completely;  4999.47 MB loaded, full load: True
+[INFO] CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+Windows fatal exception: access violation
+
+Stack (most recent call first):
+  File "D:\AI\ComfyUI\.venv\Lib\site-packages\torch\storage.py", line 466 in __getitem__
+  File "D:\AI\ComfyUI\comfy\utils.py", line 173 in load_torch_file
+  File "D:\AI\ComfyUI\comfy\sd.py", line 2427 in load_diffusion_model
+  File "D:\AI\ComfyUI\nodes.py", line 1013 in load_unet
+  File "D:\AI\ComfyUI\execution.py", line 314 in process_inputs
+  File "D:\AI\ComfyUI\execution.py", line 326 in _async_map_node_over_list
+  File "D:\AI\ComfyUI\execution.py", line 352 in get_output_data
+  File "D:\AI\ComfyUI\execution.py", line 547 in execute
+  File "D:\AI\ComfyUI\execution.py", line 789 in execute_async
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\events.py", line 88 in _run
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\base_events.py", line 1999 in _run_once
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\base_events.py", line 645 in run_forever
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\base_events.py", line 678 in run_until_complete
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\runners.py", line 118 in run
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\runners.py", line 195 in run
+  File "D:\AI\ComfyUI\execution.py", line 728 in execute
+  File "D:\AI\ComfyUI\main.py", line 368 in prompt_worker
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\threading.py", line 1012 in run
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "D:\AI\runtime\python\cpython-3.12.11-windows-x86_64-none\Lib\threading.py", line 1032 in _bootstrap

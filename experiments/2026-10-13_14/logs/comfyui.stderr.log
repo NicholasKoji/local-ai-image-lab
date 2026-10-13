@@ -1,0 +1,115 @@
+[INFO] setup plugin alembic.autogenerate.schemas
+[INFO] setup plugin alembic.autogenerate.tables
+[INFO] setup plugin alembic.autogenerate.types
+[INFO] setup plugin alembic.autogenerate.constraints
+[INFO] setup plugin alembic.autogenerate.defaults
+[INFO] setup plugin alembic.autogenerate.comments
+[INFO] setup plugin alembic.ext.checkconstraint_byname
+[WARNING] On windows we are currently forcing single GPU mode in ComfyUI due to a Nvidia related issue, if you want to disable this use: --cuda-device all
+[WARNING] WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+[INFO] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_embedding', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[INFO] Found comfy_kitchen backend cuda: {'available': True, 'disabled': True, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Found comfy_kitchen backend ascend: {'available': False, 'disabled': False, 'unavailable_reason': "torch-npu is not installed: No module named 'torch_npu'", 'capabilities': []}
+[INFO] Found comfy_kitchen backend hip: {'available': False, 'disabled': False, 'unavailable_reason': 'PyTorch ROCm/HIP runtime not available', 'capabilities': []}
+[INFO] Checkpoint files will always be loaded safely.
+[INFO] Total VRAM 6144 MB, total RAM 16303 MB
+[INFO] pytorch version: 2.12.1+cu126
+[INFO] Set vram state to: NORMAL_VRAM
+[INFO] Device: cuda:0 NVIDIA GeForce GTX 1660 Ti : cudaMallocAsync
+[INFO] Using async weight offloading with 2 streams
+[INFO] Using pytorch attention
+[INFO] aimdo: src-win/cuda-detour.c:38:INFO:aimdo_setup_hooks: installing 6 hooks
+[INFO] aimdo: src/control.c:269:INFO:comfy-aimdo NVML pressure enabled
+[INFO] aimdo: src-win/shmem-detect.c:80:INFO:comfy-aimdo WDDM adapter match: NVIDIA GeForce GTX 1660 Ti runtime_luid=00000000:0001c9e4 dxgi_luid=00000000:0001c9e4
+[INFO] aimdo: src/control.c:284:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce GTX 1660 Ti (VRAM: 6143 MB)
+[INFO] DynamicVRAM support detected and enabled
+[INFO] Python version: 3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]
+[INFO] ComfyUI version: 0.39.0
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] comfy-kitchen version: 0.2.37
+[INFO] comfyui-frontend-package version: 1.53.10
+[INFO] comfyui-workflow-templates version: 0.11.76
+[INFO] comfyui-embedded-docs version: 0.5.13
+[INFO] comfy-kitchen version: 0.2.37
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] [Prompt Server] web root: D:\AI\ComfyUI\.venv\Lib\site-packages\comfyui_frontend_package\static
+[INFO] Asset seeder disabled
+[INFO] No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+[INFO] ComfyUI-GGUF: Allowing full torch compile
+[INFO]
+Import times for custom nodes:
+[INFO]    0.0 seconds: D:\AI\ComfyUI\custom_nodes\websocket_image_save.py
+[INFO]    0.0 seconds: D:\AI\ComfyUI\custom_nodes\krea2_text_gguf.py
+[INFO]    0.2 seconds: D:\AI\ComfyUI\custom_nodes\ComfyUI-GGUF
+[INFO]
+[INFO] Using RAM pressure cache.
+[INFO] Starting server
+
+[INFO] To see the GUI go to: http://127.0.0.1:8188
+[INFO] got prompt
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\vae\\qwen_image_vae.safetensors']
+[INFO] Using pytorch attention in VAE
+[INFO] Using pytorch attention in VAE
+[INFO] VAE load device: cpu, offload device: cpu, dtype: torch.float32
+[INFO] gguf qtypes: F32 (145), Q6_K (37), Q4_K (216)
+[WARNING] Dequantizing token_embd.weight to prevent runtime OOM.
+[INFO] Model storage policy: fast_disk=False paths=[]
+[INFO] Krea2 text GGUF: all text weights loaded; native 12-layer conditioning enabled.
+[INFO] Requested to load CheckedKreaTextModel
+[INFO] loaded completely;  2813.13 MB loaded, full load: True
+[INFO] CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+[INFO] Requested to load CheckedKreaTextModel
+[INFO] Krea2 Q4 text conditioning verified: shape=(1, 39, 30720), finite=True
+[INFO] gguf qtypes: F32 (167), F16 (1), Q5_K (63), Q2_K (201)
+[INFO] model weight dtype torch.float16, manual cast: torch.float32
+[INFO] model_type FLUX
+[INFO] Model storage policy: fast_disk=False paths=[]
+[WARNING] unet unexpected: ['last.down.weight', 'last.up.weight']
+[INFO] Requested to load Krea2
+[INFO] loaded partially; 3492.60 MB usable, 3335.10 MB loaded, 1705.28 MB offloaded, 157.50 MB buffer reserved, lowvram patches: 0
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+  0%|          | 0/2 [00:00<?, ?it/s,   Model Initializing ...  ]
+  0%|          | 0/2 [02:49<?, ?it/s,  Model Initialization complete!  ]
+ 50%|█████     | 1/2 [02:49<02:49, 169.96s/it,  Model Initialization complete!  ]
+ 50%|█████     | 1/2 [05:45<02:49, 169.96s/it]
+100%|██████████| 2/2 [05:45<00:00, 172.53s/it]
+100%|██████████| 2/2 [05:45<00:00, 172.53s/it]
+[INFO] Requested to load WanVAE
+[INFO] loaded completely;  484.06 MB loaded, full load: True
+[INFO] Prompt executed in 453.75 seconds
+[INFO] Using RAM pressure cache.
+[INFO] got prompt
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\vae\\qwen_image_vae.safetensors']
+[INFO] Using pytorch attention in VAE
+[INFO] Using pytorch attention in VAE
+[INFO] VAE load device: cpu, offload device: cpu, dtype: torch.float32
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\text_encoders\\qwen_3_06b_base.safetensors']
+[INFO] Requested to load AnimaTEModel_
+[INFO] loaded completely;  1136.88 MB loaded, full load: True
+[INFO] CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+[INFO] gguf qtypes: Q5_0 (707), F32 (220), F16 (1)
+[INFO] model weight dtype torch.float16, manual cast: torch.float32
+[INFO] model_type FLOW
+[INFO] Model storage policy: fast_disk=False paths=[]
+[WARNING] unet unexpected: ['pos_embedder.dim_spatial_range', 'pos_embedder.dim_temporal_range', 'pos_embedder.seq']
+[INFO] Requested to load Anima
+[INFO] loaded completely; 3462.47 MB usable, 1978.68 MB loaded, full load: True
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+  0%|          | 0/4 [00:00<?, ?it/s,   Model Initializing ...  ]
+  0%|          | 0/4 [00:21<?, ?it/s,  Model Initialization complete!  ]
+ 25%|██▌       | 1/4 [00:21<01:04, 21.60s/it,  Model Initialization complete!  ]
+ 25%|██▌       | 1/4 [00:50<01:04, 21.60s/it]
+ 50%|█████     | 2/4 [00:50<00:50, 25.13s/it]
+ 75%|███████▌  | 3/4 [01:15<00:25, 25.16s/it]
+100%|██████████| 4/4 [01:40<00:00, 25.42s/it]
+100%|██████████| 4/4 [01:40<00:00, 25.21s/it]
+[INFO] Requested to load WanVAE
+[INFO] loaded completely;  484.06 MB loaded, full load: True
+[INFO] Prompt executed in 127.10 seconds
+[INFO] Using RAM pressure cache.

@@ -1,0 +1,34 @@
+# External runtimes, models and caches stay in D:\AI, never in this repository.
+.venv/
+venv/
+models/
+runtime/
+cache/
+temp/
+generated/
+__pycache__/
+*.py[cod]
+*.gguf
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.part
+*.download
+*.pid
+*.log
+!experiments/2026-10-13_14/logs/*.log
+
+# Local credentials and editor/OS state.
+.env
+.env.*
+!.env.example
+credentials.json
+secrets/
+*.pem
+*.key
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini

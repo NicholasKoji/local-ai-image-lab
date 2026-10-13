@@ -1,0 +1,51 @@
+Anima 2.9B Q5_0 · 2026-10-14 本机实测
+
+结论
+- 已从原有 Anima-2.9B-preview-v1 BF16 权重本机转换为标准 GGUF Q5_0。
+- 文件为 2,009,066,560 字节（约 2.01GB / 1.87GiB），没有下载另一套大权重。
+- 使用 gguf 0.19.0 的标准 Q5_0 量化实现，全部 928 个张量的逻辑尺寸与源模型一致，共 2,921,547,563 参数。
+- 707 个张量为 Q5_0，220 个小型/归一化张量保留 F32，1 个不满足块大小的矩阵保留 F16。
+- 不是普通 Anima 2B，也不是 Q5_K_M。
+
+本次实测配置
+- 512×512，1 张，4 步，CFG 4，Euler + sgm_uniform。
+- 沿用上次 Anima 测试的橘猫正面、负面提示词和 seed 20261013。
+- Q5_0 主模型在 GPU 上计算，ModelComputeDtype=fp16。
+- 已有 Qwen 0.6B 文本编码器改用 CPU；共用 Qwen Image VAE 在 CPU 上 FP32 分块解码。
+- 日志确认主模型完整装入 GPU：1978.68MiB，full load=True，无部分卸载。
+- 4 步采样共约 100.84 秒，平均 25.21 秒/步。
+- 包括加载、文本编码和解码在内，完整短测共 127.10 秒，即 2 分 7 秒。
+- 图像成功保存，无黑图；但 4 步图的线条和细节粗糙，不代表正常步数下的画质。
+- 根据本次速率粗略推算，28 步约 12 分钟，实际会受温度、缓存和后台负载影响；本轮没有跑 28 步。
+- 这次同时改变了量化权重、计算精度和文本编码设备，不是只改变量化位数的严格对照测试。
+
+使用方法
+1. 双击 D:\AI\Start-ComfyUI.cmd。
+2. 打开工作流 Anima_2.9B_Q5_6GB。
+3. 默认是已实测的 4 步测速配置，适合检查流程和构图，不是正式画质配置。
+4. 原作者推荐 28-50 步；需要正常画质时将采样器步数改为 28，并预留较长等待时间。
+5. 图片保存到 D:\AI\ComfyUI\output；不用时可双击 D:\AI\Stop-ComfyUI.cmd。
+6. 本轮结束已经释放模型，未留下长测任务。
+
+文件位置
+Q5 权重：D:\AI\ComfyUI\models\diffusion_models\Anima-2.9B-preview-v1-Q5_0.gguf
+工作流：D:\AI\ComfyUI\user\default\workflows\Anima_2.9B_Q5_6GB.json
+文本编码器：D:\AI\ComfyUI\models\text_encoders\qwen_3_06b_base.safetensors
+共用 VAE：D:\AI\ComfyUI\models\vae\qwen_image_vae.safetensors
+
+空间清理未完成
+旧 Anima BF16 权重的删除命令被执行环境拦截，文件仍保留。
+当前 D 盘剩余约 40.78GiB。当前 Q5 工作流不再使用下列旧主模型，可手动删除以释放约 5.44GiB：
+D:\AI\ComfyUI\models\diffusion_models\Anima-2.9B-preview-v1.safetensors
+上轮未成功删除的旧 Krea FP8 文本编码器也仍在，当前 Krea Q4 工作流不使用它，约 4.88GiB：
+D:\AI\ComfyUI\models\text_encoders\qwen3vl_4b_fp8_scaled.safetensors
+请保留名称不同的 qwen_3_06b_base.safetensors、Qwen3VL-4B-Instruct-Q4_K_M.gguf 和共用 VAE。
+
+来源
+原模型及步数建议：https://huggingface.co/Gazingstars123/Anima-2.9B
+标准 GGUF 量化实现：https://github.com/ggml-org/llama.cpp/tree/master/gguf-py
+加载插件：https://github.com/city96/ComfyUI-GGUF
+
+本次排除的在线文件
+vanes430/Anima-2.9B-GGUF 中的 Q5_0 文件标称约 2.10GB，实际为 4,017,482,848 字节。
+只读取了它的 1MiB 文件头，发现多处矩阵维度与原模型不同（例如一处 4096 对应源模型 2048），因此未下载完整文件，也未用它推理。
