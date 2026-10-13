@@ -1,0 +1,85 @@
+[INFO] setup plugin alembic.autogenerate.schemas
+[INFO] setup plugin alembic.autogenerate.tables
+[INFO] setup plugin alembic.autogenerate.types
+[INFO] setup plugin alembic.autogenerate.constraints
+[INFO] setup plugin alembic.autogenerate.defaults
+[INFO] setup plugin alembic.autogenerate.comments
+[INFO] setup plugin alembic.ext.checkconstraint_byname
+[WARNING] On windows we are currently forcing single GPU mode in ComfyUI due to a Nvidia related issue, if you want to disable this use: --cuda-device all
+[INFO] Adding extra search path custom_nodes D:\project\local-ai-image-lab\scripts\benchmark\nodes
+[INFO] Setting output directory to: D:\project\local-ai-image-lab\generated\benchmark\new-cu130-int8\images
+[INFO] Setting user directory to: D:\project\local-ai-image-lab\generated\benchmark\new-cu130-int8\user
+[INFO] Found comfy_kitchen backend cuda: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_embedding', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'fp16_conv3d', 'fp16_conv3d_out', 'fp16_linear', 'gemv_awq_w4a16', 'group_norm_silu_pad3d', 'group_norm_silu_pad3d_out', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'sol_attn', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}
+[INFO] Found comfy_kitchen backend ascend: {'available': False, 'disabled': False, 'unavailable_reason': "torch-npu is not installed: No module named 'torch_npu'", 'capabilities': []}
+[INFO] Found comfy_kitchen backend hip: {'available': False, 'disabled': False, 'unavailable_reason': 'PyTorch ROCm/HIP runtime not available', 'capabilities': []}
+[INFO] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[INFO] Checkpoint files will always be loaded safely.
+[INFO] Total VRAM 6144 MB, total RAM 16303 MB
+[INFO] pytorch version: 2.12.1+cu130
+[INFO] Set vram state to: NORMAL_VRAM
+[INFO] Device: cuda:0 NVIDIA GeForce GTX 1660 Ti : cudaMallocAsync
+[INFO] Using async weight offloading with 2 streams
+[INFO] Using pytorch attention
+[INFO] aimdo: src-win/cuda-detour.c:38:INFO:aimdo_setup_hooks: installing 6 hooks
+[INFO] aimdo: src/control.c:269:INFO:comfy-aimdo NVML pressure enabled
+[INFO] aimdo: src-win/shmem-detect.c:80:INFO:comfy-aimdo WDDM adapter match: NVIDIA GeForce GTX 1660 Ti runtime_luid=00000000:9441ba2b dxgi_luid=00000000:9441ba2b
+[INFO] aimdo: src/control.c:284:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce GTX 1660 Ti (VRAM: 6143 MB)
+[INFO] DynamicVRAM support detected and enabled
+[INFO] Python version: 3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]
+[INFO] ComfyUI version: 0.39.0
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] comfy-kitchen version: 0.2.37
+[INFO] Setting temp directory to: D:\project\local-ai-image-lab\generated\benchmark\new-cu130-int8\temporary\temp
+[INFO] comfyui-frontend-package version: 1.53.10
+[INFO] comfyui-workflow-templates version: 0.11.76
+[INFO] comfyui-embedded-docs version: 0.5.13
+[INFO] comfy-kitchen version: 0.2.37
+[INFO] comfy-aimdo version: 0.5.5
+[INFO] [Prompt Server] web root: D:\AI\environments\anima-cu130\Lib\site-packages\comfyui_frontend_package\static
+[INFO] Asset seeder disabled
+[INFO] No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+[INFO] ComfyUI-GGUF: Allowing full torch compile
+[INFO]
+Import times for custom nodes:
+[INFO]    0.0 seconds: D:\AI\ComfyUI\custom_nodes\websocket_image_save.py
+[INFO]    0.0 seconds: D:\project\local-ai-image-lab\scripts\benchmark\nodes\lab_profiler.py
+[INFO]    0.0 seconds: D:\AI\ComfyUI\custom_nodes\krea2_text_gguf.py
+[INFO]    0.3 seconds: D:\AI\ComfyUI\custom_nodes\ComfyUI-GGUF
+[INFO]
+[INFO] Using RAM pressure cache.
+[INFO] Starting server
+
+[INFO] To see the GUI go to: http://127.0.0.1:8189
+[INFO] got prompt
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\vae\\qwen_image_vae.safetensors']
+[INFO] Using pytorch attention in VAE
+[INFO] Using pytorch attention in VAE
+[INFO] VAE load device: cpu, offload device: cpu, dtype: torch.float32
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\text_encoders\\qwen_3_06b_base.safetensors']
+[INFO] Requested to load AnimaTEModel_
+[INFO] loaded completely;  1136.88 MB loaded, full load: True
+[INFO] CLIP/text encoder model load device: cpu, offload device: cpu, current: cpu, dtype: torch.float16
+[INFO] Found quantization metadata version 1
+[INFO] Detected mixed precision quantization
+[INFO] Using mixed precision operations
+[INFO] Native ops: asym_w4a8_int8, int8_tensorwise, convrot_w4a4, w6a8_int8 , emulated ops: nvfp4, float8_e5m2, float8_e4m3fn, mxfp8
+[INFO] model weight dtype torch.float16, manual cast: torch.float32
+[INFO] model_type FLOW
+[INFO] Model storage policy: fast_disk=True paths=['D:\\AI\\ComfyUI\\models\\diffusion_models\\Anima-2.9B-preview-v1_int8_convrot.safetensors']
+[WARNING] unet unexpected: ['pos_embedder.dim_spatial_range', 'pos_embedder.dim_temporal_range', 'pos_embedder.seq']
+[INFO] Requested to load Anima
+[INFO] Model Anima prepared for dynamic VRAM loading. 3168MB Staged. 0 patches attached. Force pre-loaded 204 weights: 89 KB.
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+  0%|          | 0/4 [00:00<?, ?it/s,   Model Initializing ...  ]
+  0%|          | 0/4 [00:08<?, ?it/s,  Model Initialization complete!  ]
+ 25%|██▌       | 1/4 [00:08<00:25,  8.66s/it,  Model Initialization complete!  ]
+ 25%|██▌       | 1/4 [00:01<00:25,  8.66s/it]
+ 50%|█████     | 2/4 [00:01<00:01,  1.43it/s]
+ 75%|███████▌  | 3/4 [00:07<00:06,  6.19s/it]
+100%|██████████| 4/4 [00:14<00:00,  6.86s/it]
+100%|██████████| 4/4 [00:14<00:00,  3.61s/it]
+[INFO] Requested to load WanVAE
+[INFO] loaded completely;  484.06 MB loaded, full load: True
+[INFO] Prompt executed in 54.12 seconds

@@ -1,0 +1,655 @@
+{
+  "prompt": {
+    "78": {
+      "class_type": "UnetLoaderGGUFAdvanced",
+      "inputs": {
+        "unet_name": "Anima-2.9B-preview-v1-Q5_0.gguf",
+        "dequant_dtype": "default",
+        "patch_dtype": "default",
+        "patch_on_device": false
+      }
+    },
+    "71": {
+      "class_type": "CLIPLoader",
+      "inputs": {
+        "clip_name": "qwen_3_06b_base.safetensors",
+        "type": "stable_diffusion",
+        "device": "cpu"
+      }
+    },
+    "72": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "qwen_image_vae.safetensors"
+      }
+    },
+    "77": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "clip": [
+          "71",
+          0
+        ],
+        "text": "masterpiece, best quality, anime illustration, no humans, a fluffy orange tabby cat sitting on a wooden windowsill inside a cozy countryside cottage, looking outside, one small blue ceramic flowerpot beside the cat, soft morning sunlight through the window, a peaceful green garden in the background, warm colors, clean lineart, soft cel shading, detailed fur, charming storybook atmosphere, medium shot"
+      }
+    },
+    "75": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "clip": [
+          "71",
+          0
+        ],
+        "text": "worst quality, low quality, blurry, jpeg artifacts, text, watermark, logo, deformed, extra limbs"
+      }
+    },
+    "74": {
+      "class_type": "EmptyLatentImage",
+      "inputs": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
+    },
+    "76": {
+      "class_type": "LabProfileKSampler",
+      "inputs": {
+        "model": [
+          "79",
+          0
+        ],
+        "positive": [
+          "77",
+          0
+        ],
+        "negative": [
+          "75",
+          0
+        ],
+        "latent_image": [
+          "74",
+          0
+        ],
+        "seed": 20261013,
+        "steps": 28,
+        "cfg": 4.0,
+        "sampler_name": "euler",
+        "scheduler": "sgm_uniform",
+        "denoise": 1.0
+      }
+    },
+    "73": {
+      "class_type": "VAEDecodeTiled",
+      "inputs": {
+        "samples": [
+          "76",
+          0
+        ],
+        "vae": [
+          "72",
+          0
+        ],
+        "tile_size": 256,
+        "overlap": 64,
+        "temporal_size": 64,
+        "temporal_overlap": 8
+      }
+    },
+    "46": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "73",
+          0
+        ],
+        "filename_prefix": "new-cu130-q5-28step"
+      }
+    },
+    "79": {
+      "class_type": "ModelComputeDtype",
+      "inputs": {
+        "model": [
+          "78",
+          0
+        ],
+        "dtype": "fp16"
+      }
+    }
+  },
+  "extra_data": {
+    "extra_pnginfo": {
+      "workflow": {
+        "last_node_id": 79,
+        "last_link_id": 10,
+        "nodes": [
+          {
+            "id": 78,
+            "type": "UnetLoaderGGUFAdvanced",
+            "pos": [
+              20,
+              40
+            ],
+            "size": [
+              380,
+              190
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  10
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "UnetLoaderGGUFAdvanced"
+            },
+            "widgets_values": [
+              "Anima-2.9B-preview-v1-Q5_0.gguf",
+              "default",
+              "default",
+              false
+            ],
+            "title": "主模型 · Anima 2.9B Q5_0"
+          },
+          {
+            "id": 71,
+            "type": "CLIPLoader",
+            "pos": [
+              20,
+              420
+            ],
+            "size": [
+              380,
+              165
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "CLIP",
+                "name": "CLIP",
+                "type": "CLIP",
+                "links": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPLoader",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              "qwen_3_06b_base.safetensors",
+              "stable_diffusion",
+              "cpu"
+            ],
+            "title": "文本编码器 · Qwen 0.6B / CPU"
+          },
+          {
+            "id": 72,
+            "type": "VAELoader",
+            "pos": [
+              20,
+              610
+            ],
+            "size": [
+              380,
+              165
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "links": [
+                  8
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              "qwen_image_vae.safetensors"
+            ],
+            "title": "VAE · 共用已有文件"
+          },
+          {
+            "id": 77,
+            "type": "CLIPTextEncode",
+            "pos": [
+              440,
+              40
+            ],
+            "size": [
+              460,
+              270
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 1
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  4
+                ]
+              }
+            ],
+            "title": "① 正面提示词 · 描述你想画的内容",
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              "masterpiece, best quality, anime illustration, no humans, a fluffy orange tabby cat sitting on a wooden windowsill inside a cozy countryside cottage, looking outside, one small blue ceramic flowerpot beside the cat, soft morning sunlight through the window, a peaceful green garden in the background, warm colors, clean lineart, soft cel shading, detailed fur, charming storybook atmosphere, medium shot"
+            ],
+            "color": "#232",
+            "bgcolor": "#353"
+          },
+          {
+            "id": 75,
+            "type": "CLIPTextEncode",
+            "pos": [
+              440,
+              365
+            ],
+            "size": [
+              460,
+              170
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 2
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  5
+                ]
+              }
+            ],
+            "title": "负面提示词 · 不想出现的内容",
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              "worst quality, low quality, blurry, jpeg artifacts, text, watermark, logo, deformed, extra limbs"
+            ],
+            "color": "#223",
+            "bgcolor": "#335"
+          },
+          {
+            "id": 74,
+            "type": "EmptyLatentImage",
+            "pos": [
+              440,
+              590
+            ],
+            "size": [
+              360,
+              140
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [
+                  6
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptyLatentImage",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              512,
+              512,
+              1
+            ],
+            "title": "② 尺寸 · 先用 512 × 512 / 单张"
+          },
+          {
+            "id": 76,
+            "type": "LabProfileKSampler",
+            "pos": [
+              950,
+              40
+            ],
+            "size": [
+              350,
+              390
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 3
+              },
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 4
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "link": 5
+              },
+              {
+                "localized_name": "latent_image",
+                "name": "latent_image",
+                "type": "LATENT",
+                "link": 6
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "slot_index": 0,
+                "links": [
+                  7
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LabProfileKSampler",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              20261013,
+              "fixed",
+              28,
+              4.0,
+              "euler",
+              "sgm_uniform",
+              1.0
+            ],
+            "title": "Anima benchmark · 28 steps"
+          },
+          {
+            "id": 73,
+            "type": "VAEDecodeTiled",
+            "pos": [
+              950,
+              490
+            ],
+            "size": [
+              350,
+              220
+            ],
+            "flags": {
+              "collapsed": true
+            },
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 7
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 8
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "slot_index": 0,
+                "links": [
+                  9
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecodeTiled",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              256,
+              64,
+              64,
+              8
+            ],
+            "title": "分块解码 · 节省内存"
+          },
+          {
+            "id": 46,
+            "type": "SaveImage",
+            "pos": [
+              1350,
+              40
+            ],
+            "size": [
+              500,
+              560
+            ],
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "images",
+                "type": "IMAGE",
+                "link": 9
+              }
+            ],
+            "outputs": [
+              {
+                "name": "images",
+                "type": "IMAGE",
+                "links": null
+              }
+            ],
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.11.1",
+              "Node name for S&R": "SaveImage",
+              "enableTabs": false,
+              "tabWidth": 65,
+              "tabXOffset": 10,
+              "hasSecondTab": false,
+              "secondTabText": "Send Back",
+              "secondTabOffset": 80,
+              "secondTabWidth": 65
+            },
+            "widgets_values": [
+              "Anima_2.9B_Q5"
+            ],
+            "title": "④ 生成结果 · 自动保存到 output"
+          },
+          {
+            "id": 79,
+            "type": "ModelComputeDtype",
+            "pos": [
+              20,
+              260
+            ],
+            "size": [
+              380,
+              110
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "title": "计算精度 · FP16",
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": 10
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  3
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ModelComputeDtype",
+              "cnr_id": "comfy-core"
+            },
+            "widgets_values": [
+              "fp16"
+            ]
+          }
+        ],
+        "links": [
+          [
+            1,
+            71,
+            0,
+            77,
+            0,
+            "CLIP"
+          ],
+          [
+            2,
+            71,
+            0,
+            75,
+            0,
+            "CLIP"
+          ],
+          [
+            3,
+            79,
+            0,
+            76,
+            0,
+            "MODEL"
+          ],
+          [
+            4,
+            77,
+            0,
+            76,
+            1,
+            "CONDITIONING"
+          ],
+          [
+            5,
+            75,
+            0,
+            76,
+            2,
+            "CONDITIONING"
+          ],
+          [
+            6,
+            74,
+            0,
+            76,
+            3,
+            "LATENT"
+          ],
+          [
+            7,
+            76,
+            0,
+            73,
+            0,
+            "LATENT"
+          ],
+          [
+            8,
+            72,
+            0,
+            73,
+            1,
+            "VAE"
+          ],
+          [
+            9,
+            73,
+            0,
+            46,
+            0,
+            "IMAGE"
+          ],
+          [
+            10,
+            78,
+            0,
+            79,
+            0,
+            "MODEL"
+          ]
+        ],
+        "groups": [],
+        "config": {},
+        "extra": {
+          "ds": {
+            "scale": 0.65,
+            "offset": [
+              80,
+              80
+            ]
+          }
+        },
+        "version": 0.4
+      }
+    }
+  }
+}

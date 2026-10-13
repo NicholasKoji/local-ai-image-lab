@@ -1,0 +1,10 @@
+{
+  "label": "new-cu130-int8",
+  "profile": false,
+  "int8": true,
+  "success": true,
+  "server_parent_pid": 34336,
+  "prompt_id": "41507800-6167-42c1-a65e-2c5f51f3f612",
+  "request_wall_seconds": 54.51499999999942,
+  "server_exit_code": 15
+}

@@ -19,6 +19,7 @@ __pycache__/
 *.pid
 *.log
 !experiments/2026-10-13_14/logs/*.log
+!experiments/2026-10-14_backend_ab/*/server.log
 
 # Local credentials and editor/OS state.
 .env

@@ -1,0 +1,309 @@
+{
+  "profile_enabled": true,
+  "sampler_wall_seconds_including_model_preparation": 139.13887570000225,
+  "peak_allocated_mib": 2239.3519649505615,
+  "peak_reserved_mib": 2368.0,
+  "torch": "2.12.1+cu126",
+  "cuda": "12.6",
+  "gpu": "NVIDIA GeForce GTX 1660 Ti",
+  "note": "CUDA-event instrumentation: elapsed stream durations include host launch gaps; nested scopes overlap. Weight preparation includes dequantization, casts, copies and patches, not pure PCIe transfer time. Instrumented run is not an uninstrumented speed benchmark.",
+  "timing_method": "cuda_events",
+  "operators": [
+    {
+      "name": "gguf_dequantize",
+      "count": 2730,
+      "elapsed_ms": 25583.375077794306
+    },
+    {
+      "name": "weight_prepare_including_dequantize",
+      "count": 2704,
+      "elapsed_ms": 25593.52601838112
+    },
+    {
+      "name": "linear",
+      "count": 2706,
+      "elapsed_ms": 97368.91351639852
+    },
+    {
+      "name": "attention",
+      "count": 344,
+      "elapsed_ms": 5876.992414459586
+    }
+  ],
+  "linear_shapes_and_dtypes": [
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        83,
+        1024
+      ],
+      "weight_shape": [
+        1024,
+        1024
+      ],
+      "count": 37
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        79,
+        1024
+      ],
+      "weight_shape": [
+        1024,
+        1024
+      ],
+      "count": 12
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        83,
+        1024
+      ],
+      "weight_shape": [
+        4096,
+        1024
+      ],
+      "count": 6
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        83,
+        4096
+      ],
+      "weight_shape": [
+        1024,
+        4096
+      ],
+      "count": 6
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        33,
+        1024
+      ],
+      "weight_shape": [
+        1024,
+        1024
+      ],
+      "count": 37
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        23,
+        1024
+      ],
+      "weight_shape": [
+        1024,
+        1024
+      ],
+      "count": 12
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        33,
+        1024
+      ],
+      "weight_shape": [
+        4096,
+        1024
+      ],
+      "count": 6
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        1,
+        33,
+        4096
+      ],
+      "weight_shape": [
+        1024,
+        4096
+      ],
+      "count": 6
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        32,
+        32,
+        68
+      ],
+      "weight_shape": [
+        2048,
+        68
+      ],
+      "count": 4
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        2048
+      ],
+      "weight_shape": [
+        2048,
+        2048
+      ],
+      "count": 4
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        2048
+      ],
+      "weight_shape": [
+        6144,
+        2048
+      ],
+      "count": 4
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        2048
+      ],
+      "weight_shape": [
+        256,
+        2048
+      ],
+      "count": 484
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        256
+      ],
+      "weight_shape": [
+        6144,
+        256
+      ],
+      "count": 480
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1024,
+        2048
+      ],
+      "weight_shape": [
+        2048,
+        2048
+      ],
+      "count": 960
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        512,
+        1024
+      ],
+      "weight_shape": [
+        2048,
+        1024
+      ],
+      "count": 320
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        32,
+        32,
+        2048
+      ],
+      "weight_shape": [
+        8192,
+        2048
+      ],
+      "count": 160
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        32,
+        32,
+        8192
+      ],
+      "weight_shape": [
+        2048,
+        8192
+      ],
+      "count": 160
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        256
+      ],
+      "weight_shape": [
+        4096,
+        256
+      ],
+      "count": 4
+    },
+    {
+      "input_dtype": "torch.float16",
+      "weight_dtype": "torch.float16",
+      "input_shape": [
+        2,
+        1,
+        32,
+        32,
+        2048
+      ],
+      "weight_shape": [
+        64,
+        2048
+      ],
+      "count": 4
+    }
+  ]
+}

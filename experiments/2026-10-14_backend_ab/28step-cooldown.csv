@@ -1,0 +1,4 @@
+"Label","Time","TemperatureC","Utilization","WaitSeconds","TargetMet"
+"new-driver-cu126-q5-28step","2026-10-14T03:13:24.3031757+08:00","68","7","0.2","True"
+"new-cu130-q5-28step","2026-10-14T03:34:20.7966260+08:00","73","14","303.3","False"
+"new-cu130-int8-28step","2026-10-14T03:57:39.2402409+08:00","74","6","303.2","False"

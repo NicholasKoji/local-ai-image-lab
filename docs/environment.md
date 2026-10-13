@@ -2,12 +2,12 @@
 
 这是 2026-10-13～14 生图会话的环境记录，不是持续更新的依赖锁文件。
 
-## 已有运行环境
+## 默认运行环境（驱动已更新）
 
 | 项目 | 会话中使用的配置 |
 | --- | --- |
 | CPU / 内存 | Intel i7-9750H / 16GB |
-| GPU / 驱动 | NVIDIA GTX 1660 Ti 6GB / 546.33 |
+| GPU / 驱动 | NVIDIA GTX 1660 Ti 6GB / 616.92（初始实验为 546.33） |
 | ComfyUI | `D:\AI\ComfyUI`，v0.39.0 |
 | Python | 3.12.11，`D:\AI\ComfyUI\.venv\Scripts\python.exe` |
 | PyTorch / torchvision | 2.12.1+cu126 / 0.27.1+cu126 |
@@ -18,6 +18,16 @@
 
 启动参数以 `scripts/launch/start-comfy.ps1` 为准：仅监听 `127.0.0.1:8188`，FP16 主模型、CPU VAE、禁用 pinned memory、预留 0.8GB 显存、不显示采样预览；保留动态显存机制。原始 `first-run-crash.log` 记录的是更早的 PyTorch 2.7.1 配置，不代表最后运行环境。
 
+## 独立 cu130 对照环境
+
+2026-10-14 已完成三组 4/28 步实测；[结果、条件与原始记录](../experiments/2026-10-14_backend_ab/README.md)。
+
+- Python：`D:\AI\environments\anima-cu130\Scripts\python.exe`，3.12.11。
+- PyTorch / torchvision：2.12.1+cu130 / 0.27.1+cu130；87 个包与旧环境相比，仅这两个 CUDA wheel 构建不同。
+- 共享同一 ComfyUI 源码、文本编码器及 VAE，没有复制整套模型或替换默认入口。
+- 本机优先推荐原生 INT8 ConvRot；旧环境和 Q5 权重仍保留，616.92 驱动是两套环境共用的系统组件。
+- 驱动由用户手动安装完成，自动安装辅助脚本未实际运行，因此没有它导出的旧驱动备份。
+
 ## 当前工作流所需权重
 
 以下路径相对于 `D:\AI\ComfyUI\models`。权重不包含在 Git 仓库中。
@@ -25,6 +35,7 @@
 | 相对路径 | 字节数 | 用途 |
 | --- | ---: | --- |
 | `diffusion_models/Anima-2.9B-preview-v1-Q5_0.gguf` | 2,009,066,560 | Anima 主模型，本机从 BF16 转换 |
+| `diffusion_models/Anima-2.9B-preview-v1_int8_convrot.safetensors` | 3,082,486,758 | Anima cu130 对照，作者发布的原生 INT8 ConvRot |
 | `text_encoders/qwen_3_06b_base.safetensors` | 1,192,135,096 | Anima CPU 文本编码器 |
 | `diffusion_models/krea2_turbo-Q2_K.gguf` | 4,889,589,024 | Krea 主模型 |
 | `text_encoders/Qwen3VL-4B-Instruct-Q4_K_M.gguf` | 2,497,281,664 | Krea CPU 文本编码器 |

@@ -1,0 +1,11 @@
+{
+  "label": "new-cu130-int8-28step",
+  "profile": false,
+  "int8": true,
+  "steps": 28,
+  "success": true,
+  "server_parent_pid": 19604,
+  "prompt_id": "642595af-8396-4c83-86aa-fe317c11efbc",
+  "request_wall_seconds": 236.82800000000861,
+  "server_exit_code": 15
+}

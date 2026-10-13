@@ -2,7 +2,7 @@
 
 本机 ComfyUI 生图实验项目：整理 2026-10-13～14 会话中的工作流、适配节点、量化工具、测试图片与运行记录。
 
-**当前入口是 Anima 2.9B Q5_0；Krea 2 Turbo Q2_K 保留作对比。** 这是针对 GTX 1660 Ti 6GB 的本机配置，不是包含模型的一键安装包。
+**日常入口仍是 Anima 2.9B Q5_0；最新实测推荐 cu130 + INT8 ConvRot，尚未自动切换入口。Krea 2 Turbo Q2_K 保留作对比。** 这是针对 GTX 1660 Ti 6GB 的本机配置，不是包含模型的一键安装包。
 
 ## 快速使用
 
@@ -13,7 +13,7 @@
 3. 修改正面提示词，保持 512×512、单张，点击运行。
 4. 图片保存到 `D:\AI\ComfyUI\output`。不用时运行 `scripts/launch/Stop-ComfyUI.cmd`。
 
-**默认步数仅用于测速，不代表正常画质。** Anima 28 步与 Krea 8 步版本放在 `workflows/full/`，量化版本的这两项长测尚未执行。
+**默认步数仅用于测速，不代表正常画质。** Anima 28 步与 Krea 8 步版本放在 `workflows/full/`，Anima Q5 / INT8 的 28 步已在后端对照中完成；Krea 8 步仍未长测。
 
 原有 `D:\AI\Start-ComfyUI.cmd` / `Stop-ComfyUI.cmd` 继续有效。项目启动脚本仍指向现有 `D:\AI` 安装，不会另装一份环境。
 
@@ -22,6 +22,7 @@
 ```text
 custom_nodes/                  本会话编写的 Krea 2 文本 GGUF 适配节点
 scripts/
+  benchmark/                   Anima 后端对照、环境准备与计时工具
   launch/                      本机启动、停止脚本
   quantization/                Anima 2.9B → Q5_0 转换工具
   workflows/                   量化工作流构建脚本
@@ -30,13 +31,14 @@ workflows/
   anima/                       当前 Anima UI 工作流
   krea2/                       当前 Krea UI 工作流
   api/                         ComfyUI /prompt 请求 JSON
-  full/                        已准备、未长测的较高步数 UI 工作流
+  full/                        较高步数 UI 工作流；Anima 已补测，Krea 未长测
 docs/
   environment.md               硬件、依赖、模型位置与来源
   guides/                      Q5 / Q2 使用说明原稿
   archive/                     早期 BF16 说明，仅作历史记录
-examples/images/               三张本机实测图片，含工作流元数据
-experiments/2026-10-13_14/      初始请求、运行结果、日志、模型头分析
+examples/images/               本机实测图片，含工作流元数据
+experiments/2026-10-13_14/       初始请求、运行结果、日志、模型头分析
+experiments/2026-10-14_backend_ab/  Anima 4/28 步对照报告、原始记录及依赖快照
 references/workflows/          当时保存的官方工作流及节点参考
 archive/
   session-scripts/              原始构建脚本，仅供追溯，不作为运行入口
@@ -79,3 +81,17 @@ generated/                     构建脚本输出，自动生成且不入 Git
 - 本仓库不自动下载模型、清理旧权重、修改驱动或改变电源/风扇设置。
 
 第三方模型、软件及参考工作流的来源见 [环境与来源](docs/environment.md)，各自沿用原发布方的许可。
+
+## 最新报告：Anima 后端对照
+
+[完整报告、成图对照与复现命令](experiments/2026-10-14_backend_ab/README.md) · [测试工具](scripts/benchmark/README.md)
+
+驱动 616.92，相同提示词与种子、512×512：
+
+| 配置 | 4 步整次请求 | 28 步整次请求 |
+| --- | ---: | ---: |
+| cu126 + Q5_0 | 161.80 秒 | **14 分 40 秒** |
+| cu130 + Q5_0 | 166.63 秒 | **17 分 19 秒** |
+| cu130 + 原生 INT8 ConvRot | 54.51 秒 | **3 分 57 秒** |
+
+28 步 INT8 本次约快 **3.72–4.39 倍**，实际成图比 4 步测速图明显干净。各组热状态不完全一致且仍有热降频，不能把两份 Q5 的差距全部归因于 CUDA；这也不代表更大分辨率或所有提示词的表现。默认入口仍未切换，旧环境及 Q5 保留。

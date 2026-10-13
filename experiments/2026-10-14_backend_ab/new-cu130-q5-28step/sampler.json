@@ -1,0 +1,10 @@
+{
+  "profile_enabled": false,
+  "sampler_wall_seconds_including_model_preparation": 1009.6317358000015,
+  "peak_allocated_mib": 2239.352056503296,
+  "peak_reserved_mib": 2336.0,
+  "torch": "2.12.1+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce GTX 1660 Ti",
+  "note": "CUDA-event instrumentation: elapsed stream durations include host launch gaps; nested scopes overlap. Weight preparation includes dequantization, casts, copies and patches, not pure PCIe transfer time. Instrumented run is not an uninstrumented speed benchmark."
+}

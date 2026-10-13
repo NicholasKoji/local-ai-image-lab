@@ -1,0 +1,11 @@
+{
+  "label": "new-cu130-q5-28step",
+  "profile": false,
+  "int8": false,
+  "steps": 28,
+  "success": true,
+  "server_parent_pid": 30184,
+  "prompt_id": "51d3a21c-84b1-4089-aa64-5a0c925dff06",
+  "request_wall_seconds": 1038.5629999999946,
+  "server_exit_code": 15
+}

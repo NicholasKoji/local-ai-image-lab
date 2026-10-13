@@ -1,0 +1,10 @@
+{
+  "label": "new-cu130-q5",
+  "profile": false,
+  "int8": false,
+  "success": true,
+  "server_parent_pid": 1600,
+  "prompt_id": "a990fdfc-ba7f-454b-be62-9f9fcb8316f0",
+  "request_wall_seconds": 166.625,
+  "server_exit_code": 15
+}
